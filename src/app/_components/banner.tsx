@@ -119,7 +119,7 @@ const Banner = () => {
           strokeLinecap="round"
         ></path>
       </svg>
-      <div className="items-center justify-center md:flex-row max-w-5xl 2xl:max-w-6xl mx-auto px-4 relative flex flex-col gap-8 md:gap-12">
+      <div className="items-center justify-center md:flex-row max-w-5xl 2xl:max-w-6xl mx-auto px-4 relative flex flex-col gap-8 md:gap-12 z-10">
         <div className="h-[250px] md:h-[586px] md:w-[433px] w-auto flex items-center justify-center">
           <Image
             src={jerson}
