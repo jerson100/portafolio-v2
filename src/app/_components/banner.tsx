@@ -5,6 +5,7 @@ import jerson from "../../../public/jerson.webp";
 import { Github, Gitlab, Linkedin } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import LogosCloud from "./LogosCloud";
 
 const Banner = () => {
   const imageContainer = useRef<HTMLImageElement>(null);
@@ -80,7 +81,9 @@ const Banner = () => {
   });
 
   return (
-    <div className="flex items-center justify-center min-h-[100vh] relative banner-container overflow-x-hidden">
+    <div className="flex items-center justify-center min-h-[100vh] relative banner-container overflow-x-hidden bg-black">
+      {/* Logos flotantes con TailwindCSS */}
+      <LogosCloud />
       <svg
         preserveAspectRatio="none"
         className="absolute left-0 bottom-0 h-[30%] md:h-[50%] w-auto opacity-0"
