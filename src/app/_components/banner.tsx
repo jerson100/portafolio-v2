@@ -18,59 +18,72 @@ const Banner = () => {
   const line2Container = useRef<SVGSVGElement>(null);
 
   useGSAP(() => {
-    gsap.from(imageContainer.current, {
-      opacity: 0,
-      x: -100,
+    // Estado inicial manual
+    gsap.set(imageContainer.current, { opacity: 0, x: -100 });
+    gsap.set(bottomContainer.current, { opacity: 0, x: 50 });
+    gsap.set(line1Container.current, { opacity: 0, x: -20 });
+    gsap.set(line2Container.current, { opacity: 0, x: 20 });
+
+    gsap.to(imageContainer.current, {
+      opacity: 1,
+      x: 0,
       duration: 0.5,
       ease: "power1.inOut",
     });
 
-    gsap.from(bottomContainer.current, {
-      opacity: 0,
-      x: 50,
-      delay: 0.35,
+    gsap.to(bottomContainer.current, {
+      opacity: 1,
+      x: 0,
+      // delay: 0.35,
       duration: 0.5,
       ease: "power1.inOut",
     });
 
-    gsap.from(line1Container.current, {
-      opacity: 0,
-      x: -20,
+    gsap.to(line1Container.current, {
+      opacity: 1,
+      x: 0,
       delay: 1.5,
       duration: 0.5,
       ease: "power1.inOut",
     });
 
-    gsap.from(line2Container.current, {
-      opacity: 0,
-      x: 20,
+    gsap.to(line2Container.current, {
+      opacity: 1,
+      x: 0,
       delay: 1,
       duration: 0.5,
       ease: "power1.inOut",
     });
 
+    // Timeline: estado inicial manual
+    gsap.set(userContainer.current, { opacity: 0, y: -20 });
+    gsap.set(professionContainer.current, { opacity: 0, x: 20 });
+    gsap.set(descriptionContainer.current, { opacity: 0, y: 20 });
+    gsap.set(socialContainer.current, { opacity: 0, x: 20 });
+    gsap.set(btnContainer.current, { opacity: 0, y: 20 });
+
     const tl = gsap.timeline({
-      defaults: { duration: 0.35, ease: "sine.out" }, // Default animation properties
+      defaults: { duration: 0.35, ease: "sine.out" },
       repeat: 0,
       delay: 0.5,
     });
 
-    tl.from(userContainer.current, { opacity: 0, y: -20 })
-      .from(professionContainer.current, { opacity: 0, x: 20 })
-      .from(descriptionContainer.current, { opacity: 0, y: 20 })
-      .from(socialContainer.current, { opacity: 0, x: 20 })
-      .from(btnContainer.current, { opacity: 0, y: 20 });
+    tl.to(userContainer.current, { opacity: 1, y: 0 })
+      .to(professionContainer.current, { opacity: 1, x: 0 })
+      .to(descriptionContainer.current, { opacity: 1, y: 0 })
+      .to(socialContainer.current, { opacity: 1, x: 0 })
+      .to(btnContainer.current, { opacity: 1, y: 0 });
 
     return () => {
       tl.kill();
     };
-  }, []);
+  });
 
   return (
-    <div className="flex items-center justify-center min-h-[100vh] relative banner-container">
+    <div className="flex items-center justify-center min-h-[100vh] relative banner-container overflow-x-hidden">
       <svg
         preserveAspectRatio="none"
-        className="absolute left-0 bottom-0 h-[30%] md:h-[50%] w-auto"
+        className="absolute left-0 bottom-0 h-[30%] md:h-[50%] w-auto opacity-0"
         width="381"
         height="770"
         viewBox="0 0 381 770"
@@ -87,7 +100,7 @@ const Banner = () => {
         ></path>
       </svg>
       <svg
-        className="absolute right-0 top-0 h-[40%] md:h-[60%] w-auto"
+        className="absolute right-0 top-0 h-[40%] md:h-[60%] w-auto opacity-0"
         xmlns="http://www.w3.org/2000/svg"
         width="304"
         height="805"
@@ -104,18 +117,20 @@ const Banner = () => {
         ></path>
       </svg>
       <div className="items-center justify-center md:flex-row max-w-5xl 2xl:max-w-6xl mx-auto px-4 relative flex flex-col gap-8 md:gap-12">
-        <Image
-          src={jerson}
-          alt="Jerson Omar Ramírez Ortiz"
-          width={600}
-          height={350}
-          ref={imageContainer}
-          className="shrink-0 h-[250px] md:h-[600px] 2xl:h-[700px] w-auto shadow-image"
-        />
+        <div className="h-[250px] md:h-[586px] md:w-[433px] w-auto flex items-center justify-center">
+          <Image
+            src={jerson}
+            alt="Jerson Omar Ramírez Ortiz"
+            width={433}
+            height={586}
+            ref={imageContainer}
+            className="shrink-0 shadow-image h-auto w-full max-h-full opacity-0"
+          />
+        </div>
         <div className="md:mb-12 2xl:mb-16 flex flex-col gap-4 items-center text-center md:items-start md:text-start">
           <h1
             ref={userContainer}
-            className="font-bold text-yellow-400 text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl"
+            className="font-bold text-yellow-400 text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl opacity-0"
           >
             Hola, soy
             <br />
@@ -123,20 +138,20 @@ const Banner = () => {
           </h1>
           <p
             ref={professionContainer}
-            className="text-white text-xl xl:text-2xl 2xl:text-3xl"
+            className="text-white text-xl xl:text-2xl 2xl:text-3xl opacity-0"
           >
             Fullstack Developer
           </p>
           <p
             ref={descriptionContainer}
-            className="text-neutral-400 text-sm md:text-base max-w-md"
+            className="text-neutral-400 text-sm md:text-base max-w-md opacity-0"
           >
             Desarrollador de software con más de 3 años de experiencia creando
             soluciones web, móviles y de escritorio. Me especializo en construir
             productos funcionales, escalables y centrados en el usuario,
             participando en todo el ciclo de desarrollo.
           </p>
-          <div className="flex flex-wrap gap-3" ref={socialContainer}>
+          <div className="flex flex-wrap gap-3 opacity-0" ref={socialContainer}>
             <a
               href="https://github.com/jerson100"
               target="_blank"
@@ -159,7 +174,7 @@ const Banner = () => {
               <Gitlab className="w-4 text-orange-500" />
             </a>
           </div>
-          <div ref={btnContainer}>
+          <div ref={btnContainer} className="opacity-0">
             <a
               href="mailto:jramiror@emeal.nttdata.com"
               className="px-4 py-2 bg-amber-300 text-black font-semibold rounded-md shadow hover:bg-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-300 focus:ring-offset-2 active:bg-amber-400 transition-all cursor-pointer text-sm xl:text-base"
@@ -169,7 +184,7 @@ const Banner = () => {
           </div>
         </div>
         <div
-          className="absolute -bottom-2 left-0 bg-amber-50/5 w-full max-w-3/4 p-4 2xl:p-6 rounded-md backdrop-blur-xs hidden md:block border border-neutral-800"
+          className="absolute -bottom-2 left-0 bg-amber-50/5 w-full max-w-3/4 p-4 2xl:p-6 rounded-md backdrop-blur-xs hidden md:block border border-neutral-800 opacity-0"
           ref={bottomContainer}
         >
           <ul className="flex justify-between list-none text-sm">
