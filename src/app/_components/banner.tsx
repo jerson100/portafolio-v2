@@ -19,7 +19,7 @@ const Banner = () => {
   } = useBanner();
 
   return (
-    <div className="flex items-center justify-center min-h-[100vh] relative banner-container overflow-x-hidden overflow-y-auto bg-black">
+    <div className="flex items-center justify-center min-h-[100vh] relative banner-container overflow-hidden bg-black">
       <LogosCloud />
       <svg
         preserveAspectRatio="none"
