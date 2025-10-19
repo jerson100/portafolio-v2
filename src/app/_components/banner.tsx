@@ -65,6 +65,8 @@ const Banner = () => {
             height={586}
             ref={imageContainer}
             className="shrink-0 shadow-image h-auto w-full max-h-full opacity-0"
+            fetchPriority="high"
+            loading="eager"
           />
         </div>
         <div className="md:mb-12 2xl:mb-16 flex flex-col gap-4 items-center text-center md:items-start md:text-start">
@@ -96,6 +98,7 @@ const Banner = () => {
               href="https://github.com/jerson100"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="GitHub de Jerson Ramírez"
             >
               <Github className="w-4 text-white" />
             </a>
@@ -103,6 +106,7 @@ const Banner = () => {
               href="https://www.linkedin.com/in/jerson100"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="LinkedIn de Jerson Ramírez"
             >
               <Linkedin className="w-4 text-blue-500" />
             </a>
@@ -110,6 +114,7 @@ const Banner = () => {
               href="https://gitlab.com/jerson100"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="GitLab de Jerson Ramírez"
             >
               <Gitlab className="w-4 text-orange-500" />
             </a>

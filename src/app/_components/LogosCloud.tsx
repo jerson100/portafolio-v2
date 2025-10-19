@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { LOGOS } from "../_core/consts";
 import { delays } from "../_core/utils";
 
